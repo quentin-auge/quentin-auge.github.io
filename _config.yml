@@ -3,5 +3,4 @@ theme: minima
 
 title:
 
-plugins:
-  - jekyll-feed
+google_analytics: UA-138576999-1
