@@ -122,10 +122,10 @@ representation is the most interesting for the three following reasons:
  representation, but not without a few caveats. For instance, what
  should the angle beween $\overrightarrow 0$ and another vector be?
  * It's the only representation in which the points follow a
- distribution, which although too spread out to be gaussian gaussian,
+ distribution, which although too spread out to be gaussian,
  is at least symmetrical.
 
-   ![](/images/representations_distplot.png)
+   ![](/images/representation_distplots.png)
 
    In  order for the neural net to learn more effectively, we are going
    to standarize each point by the mean
@@ -453,7 +453,7 @@ $$
 \end{bmatrix}
 $$
 
-![](/images/effeil_continuous.png)
+![](/images/effeil_continuous.gif)
 
 So let's insert a special value $\mathbf{\delta}$ between each stroke
 to inform the model where the pencil should be lifted.
