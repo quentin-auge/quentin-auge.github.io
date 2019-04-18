@@ -15,20 +15,20 @@ of your 6-years-old nephew which is pinned to the fridge door, then you
 are in luck, because this article is about teaching a neural network
 to draw for you.
 
-![](images/pathetic_penguin.png)
+![](/images/pathetic_penguin.png)
 
 If not, well, I let you be the sole judge of whether you beat the
 machine, or the machine beats you. The (Pytorch) code is available
 on [Github](https://github.com/quentin-auge/draw/).
 
-![](images/generated/gmm512_20_penguin.gif)
+![](/images/generated/gmm512_20_penguin.gif)
 
 In 2017, Google released tens of millions of drawings of various
 quality from *Quick Draw!*. In my opinion, a lot of then don't beat
 they machine that used them to learn drawing. The student has
 surpassed the teacher.
 
-![](images/dataset/selected_penguin.png)
+![](/images/dataset/selected_penguin.png)
 
 <small>Note: Throughout the article, everytime I include a series
 of drawings that I obviously selected carefully, I link to the larger
@@ -80,9 +80,9 @@ across 345 categories. Let's pick 3 of them (*Effeil tower*,
 *face* and *firetruck*), and draw some of the examples that
 appear in the dataset.
 
-![](images/dataset/selected_effeil.png)
-![](images/dataset/selected_face.png)
-![](images/dataset/selected_firetruck.png)
+![](/images/dataset/selected_effeil.png)
+![](/images/dataset/selected_face.png)
+![](/images/dataset/selected_firetruck.png)
 
 All three categories provide a different set of challenges. Effeil towers
 are mainly composed of straight lines with some sharp angles, while
@@ -103,7 +103,7 @@ polar-coordinates vectors
 $\begin{bmatrix} \mathbf{r}\_{i},~\mathbf{\theta}\_{i} \end{bmatrix}$
 from one such vector to the next?
 
-![](images/representations_plot.png)
+![](/images/representations_plot.png)
 
 Well, it turns out the
 $\begin{bmatrix} \Delta \mathbf{x}\_{i}~\Delta \mathbf{y}\_{i} \end{bmatrix}$
@@ -125,7 +125,7 @@ representation is the most interesting for the three following reasons:
  distribution, which although too spread out to be gaussian gaussian,
  is at least symmetrical.
 
-   ![](images/representations_distplot.png)
+   ![](/images/representations_distplot.png)
 
    In  order for the neural net to learn more effectively, we are going
    to standarize each point by the mean
@@ -175,7 +175,7 @@ as an iterative process:
  3. use the prediction as the current vector
  4. go back to step 2
 
-![](images/predict.png)
+![](/images/predict.png)
 
 In order to skip picking up the first point, let's make each
 drawing $\mathcal{X}$ start with the same vector
@@ -189,7 +189,7 @@ on what it means, don't run away. What's inside $nn\_{\_W}$ is much less
 relevant than how we interact with it from the outside. Put another
 way: feel free to consider it a black box.
 
-![](images/nn_equations.png)
+![](/images/nn_equations.png)
 
 All there is to understand is that given a bunch of weight $W$, the
 neural network is a function $nn\_{\_W}$ that associate to each input
@@ -212,7 +212,7 @@ because there are labels, *regression* because these labels are
 real-valued, and *auto* because they are essentially the same as the
 data, but shifted by one position: $\mathcal{Y}\_i = \mathcal{X}\_{i+1}$.
 
-![](images/train.png)
+![](/images/train.png)
 
 In order to quantify how close the predictions are from the labels,
 we need a *loss function* $\mathscr{L}(\mathcal{\hat{Y}},\mathcal{Y})$.
@@ -314,7 +314,7 @@ $\mathcal{X}\_1~...~\mathcal{X}\_{i-1}$ to the hidden state
 $\mathbf{h}_i$? We don't. The model does, and make it available
 to the next step by outputing it. 
 
-![](images/rnn_equations.png)
+![](/images/rnn_equations.png)
 
 The blue parts highlight the differences with the feedforward neural
 network. Interestingly, it mainly comes down to updating and exposing
@@ -334,12 +334,12 @@ The generation process is now as follow:
  3. use them as current point and current hidden state
  4. go back to step 2
 
-![](images/predict_rnn.png)
+![](/images/predict_rnn.png)
 
 Unlike feedforward neural networks, the training now exhibits the same
 kind of iterative structure as generation.
 
-![](images/train_rnn.png)
+![](/images/train_rnn.png)
 
 That's all a RNN is: a regular neural network that carries along
 a hidden state. It's trained the same way: by minimizing
@@ -357,7 +357,7 @@ dependencies).
 
 Let's illustrate by taking a *face* drawing as example:
 
-![](images/dataset/face.gif)
+![](/images/dataset/face.gif)
 
 In order to generate such a drawing, the neural network needs to know
 how to draw a circle, most importantly how to end drawing it where
@@ -389,9 +389,9 @@ epochs) and, after half an hour of training per model on GPU ...
 
 Tada!!!
 
-![](images/generated/selected_trajectory_effeil.png)
-![](images/generated/selected_trajectory_face.png)
-![](images/generated/selected_trajectory_firetruck.png)
+![](/images/generated/selected_trajectory_effeil.png)
+![](/images/generated/selected_trajectory_face.png)
+![](/images/generated/selected_trajectory_firetruck.png)
 
 Pretty disappointing, right? 
 
@@ -405,7 +405,7 @@ on a more immediate problem: the model is unable to decide when to lift
 the pencil to start a new stroke, left alone when to stop drawing. For
 its defence, it's not it's fault. We simply didn't teach it how to.
 
-![](images/generated/trajectory_effeil.gif)
+![](/images/generated/trajectory_effeil.gif)
 
 The previous generated drawings have been limited to 25 points in order
 not to get out of hand.
@@ -420,7 +420,7 @@ sequence had to be contiguous?
 Since I value your sanity (and mine), let's consider a simple drawing
 as example, and omit the initial $\overrightarrow 0$ vector It will save us the indices nightmare.
 
-![](images/effeil.gif)
+![](/images/effeil.gif)
 
 That fake Effeil tower would be represented in the dataset as a list
 of three strokes between which the pencil is lifted
@@ -432,7 +432,7 @@ $$
 \mathcal{S}_3 = \mathcal{X}\_{11}~...~\mathcal{X}\_{14}
 $$
 
-![](images/effeil_annotated.png)
+![](/images/effeil_annotated.png)
 
 While this shape of data is satisfying in terms of representational
 power, it is much less so in terms of model input. Indeed, a
@@ -453,7 +453,7 @@ $$
 \end{bmatrix}
 $$
 
-![](images/effeil_continuous.png)
+![](/images/effeil_continuous.png)
 
 So let's insert a special value $\mathbf{\delta}$ between each stroke
 to inform the model where the pencil should be lifted.
@@ -569,7 +569,7 @@ as such:
 * Draw "end of stroke" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,1,0 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{2}}\_{i+1}}$
 * Draw "end of drawing" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,0,1 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{3}}\_{i+1}}$
 
-![](images/mdn_stroke_state.png)
+![](/images/mdn_stroke_state.png)
 
 For normalization, we're going to use the softmax function for
 normalization:
@@ -586,11 +586,11 @@ gauge its influence $T_\mathbf{p}$ from the equation, hereafter are samples of
 $\begin{bmatrix} \tilde{\mathbf{p_1}}\_{i+1},~\tilde{\mathbf{p_2}}\_{i+1},~\tilde{\mathbf{p_3}}\_{i+1} \end{bmatrix} = \begin{bmatrix} 3, 2, 1 \end{bmatrix}$
 at various softmax temperatures:
 
-![](images/softmax.png)
+![](/images/softmax.png)
 
 Or more concretely with actual Effeil towers generation:
 
-![](images/generated/base_effeil_temperature_stroke_state.png)
+![](/images/generated/base_effeil_temperature_stroke_state.png)
 
 At low temperature ($T_\mathbf{p} = 0.1$), the model does not take any risk
 and consistently outputs the stroke state most represented in the data
@@ -608,9 +608,9 @@ train it with $T_\mathbf{p}=1$ — as will always be the case, $T_\mathbf{p}$ be
 generation parameter only — and generate some some drawings with
 $T_\mathbf{p} = 0.8$:
 
-![](images/generated/selected_base_effeil.png)
-![](images/generated/selected_base_face.png)
-![](images/generated/selected_base_firetruck.png)
+![](/images/generated/selected_base_effeil.png)
+![](/images/generated/selected_base_face.png)
+![](/images/generated/selected_base_firetruck.png)
 
 Hey! The generated Effeil towers and faces are starting to look like
 ones. To say the least, the firetrucks are still pretty disappointing,
@@ -663,7 +663,7 @@ You may recognize these symbols. They are the parameters of a
    $\mathbf{\rho_{xy}} = 0$, the distribution is equivalent to two
    independent normal distributions along x and y.
 
-![](images/normals.png)
+![](/images/normals.png)
 
 We can make sure that $\mathbf{\sigma_x}$ and $\mathbf{\sigma_y}$ are
 greater than 0 by passing them through an exponential, and that
@@ -686,7 +686,7 @@ $\Sigma_{i+1} = \begin{bmatrix}
 \end{bmatrix}$.
 .
 
-![](images/mdn_trajectory.png)
+![](/images/mdn_trajectory.png)
 
 $$
 \begin{aligned}
@@ -727,7 +727,7 @@ Taking a leap into the future, let's attempt to generate Effeil towers
 at various temperatures. The highest the temperature, the most
 chaotic the trajectory.
 
-![](images/generated/gmm128_1_effeil_temperatures_gmm.png)
+![](/images/generated/gmm128_1_effeil_temperatures_gmm.png)
 
 Great! We've now got a fully probabilistic for both the trajectory
 and stroke state.
@@ -1013,13 +1013,13 @@ $$
 \hat{\mathcal{Y}}_i \sim \mathcal{N}(\begin{bmatrix} \mathbf{\mu\_x}\_{\_{i+1}},~\mathbf{\mu\_y}\_{\_{i+1}} \end{bmatrix}, \begin{bmatrix} \mathbf{\sigma\_x}\_{\_{i+1}},~\mathbf{\sigma\_y}\_{\_{i+1}},~\mathbf{\rho\_{xy}}\_{\_{i+1}} \end{bmatrix}) \times \mathcal{P}(\begin{bmatrix} \tilde{\mathbf{p_1}}\_{i+1},~\tilde{\mathbf{p_2}}\_{i+1},~\tilde{\mathbf{p_3}}\_{i+1} \end{bmatrix})
 $$ 
 
-![](images/mdn_full.png)
+![](/images/mdn_full.png)
 
 And ...
 
-![](images/generated/selected_gmm128_1_effeil.png)
-![](images/generated/selected_gmm128_1_face.png)
-![](images/generated/selected_gmm128_1_firetruck.png)
+![](/images/generated/selected_gmm128_1_effeil.png)
+![](/images/generated/selected_gmm128_1_face.png)
+![](/images/generated/selected_gmm128_1_firetruck.png)
 
 Wow. Not quite as satisfying as expected after such a struggle ...
 Sure, Effeil towers and faces are getting more realistic, but
@@ -1044,7 +1044,7 @@ The reason is simple: we assumed a normal distribution for the
 trajectory, even though we saw it wasn't the case when we plotted it
 at the beginning of the article (symmetric, but too spread out):
 
-![](images/distplot_xy.png)
+![](/images/distplot_xy.png)
 
 So let's upgrade to a more sophisticated probability distribution.
 Instead of having the model return the parameters for a single normal,
@@ -1068,7 +1068,7 @@ with probability ${\mathbf{\pi}\_k}\_{\_{i+1}}$ and sample from it.
 The resulting probability distribution is called a *gaussian mixture
 model*, or GMM.
 
-![](images/gmm.png)
+![](/images/gmm.png)
 
 As in the Google Brain paper, we're going to use $K=20$ normals,
 resulting in the RNN outputing $K$ centers (2 numbers), $K$ covariance
@@ -1076,7 +1076,7 @@ matrices (3 numbers) and $K$ coefficients, for a total of
 $(2 + 3 + 1) \times K = 120$ outputs by prediction, for the trajectory
 alone!
 
-![](images/mdn_gmm.png)
+![](/images/mdn_gmm.png)
 
 As a last step, we have to derive a loss for the GMM-modelled
 trajectory. It turns out to be a pretty straigtforward extension of
@@ -1099,7 +1099,7 @@ $$
 This time, we're definitively done. This model for unconditional
 generation of drawings is the same as in the paper.
 
-![](images/sketch_rnn.png)
+![](/images/sketch_rnn.png)
 
 Credit: [A Neural Representation of Sketch Drawings](https://arxiv.org/abs/1704.03477), David Ha and Douglas Eck, Figure 2. Retouched to remove
 input vector $z$ not pertaining to unconditional generation of drawings.
@@ -1108,13 +1108,13 @@ input vector $z$ not pertaining to unconditional generation of drawings.
 
 Time for some fun. Let's use our final model to produce more drawings!
 
-![](images/generated/selected_gmm128_20_effeil.png)
-![](images/generated/selected_gmm128_20_face.png)
+![](/images/generated/selected_gmm128_20_effeil.png)
+![](/images/generated/selected_gmm128_20_face.png)
 
 Alright! We are done with Effeil towers and faces. What about the
 long-awaited firetrucks?
 
-![](images/generated/selected_gmm128_20_firetruck.png)
+![](/images/generated/selected_gmm128_20_firetruck.png)
 
 They look nice enough, but we can do better. Let's tweak the size of
 the hidden state, which conditions the complexity of the RNN, passing
@@ -1123,30 +1123,30 @@ in (between 30k and 40k drawing instead of 11k). Training now lasts
 around 2 hours per class of drawings, but the firetrucks look much
 better:
 
-![](images/generated/selected_gmm512_20_firetruck.png)
+![](/images/generated/selected_gmm512_20_firetruck.png)
 
 Scale, flashing light, axles. They have it all.
 
 That's enough metal for now. Let's turn to more organic stuff.
 
-![](images/generated/selected_gmm512_20_carrot.png)
+![](/images/generated/selected_gmm512_20_carrot.png)
 
 It's quite obvious what they are.
 
 Now, what better way to close this article than by generating some
 animals?
 
-![](images/generated/selected_gmm512_20_cat.png)
-![](images/generated/selected_gmm512_20_crab.png)
-![](images/generated/selected_gmm512_20_penguin.png)
-![](images/generated/selected_gmm512_20_giraffe.png)
+![](/images/generated/selected_gmm512_20_cat.png)
+![](/images/generated/selected_gmm512_20_crab.png)
+![](/images/generated/selected_gmm512_20_penguin.png)
+![](/images/generated/selected_gmm512_20_giraffe.png)
 
 In case you are unsure what the last class of drawings is (either
 lamas, diplodocuses or random mammals), they are giraffes. While it is
 quite complicated to recognize them, they are not too bad, considering
 the original drawings ...
 
-![](images/dataset/selected_giraffe.png)
+![](/images/dataset/selected_giraffe.png)
 
 No comment.
 
