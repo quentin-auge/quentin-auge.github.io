@@ -145,25 +145,27 @@ representation is the most interesting for the three following reasons:
  distribution, which although too spread out to be gaussian,
  is at least symmetrical.
 
-   <p style="text-align: center">
-     <img src="/images/representation_distplots.png" />
-   </p>
+ <p style="text-align: center">
+   <img src="/images/representation_distplots.png" />
+ </p>
 
-   In  order for the neural net to learn more effectively, we are going
-   to standarize each point by the mean
-   $\begin{bmatrix} \mathbf{\mu}\_1,~\mathbf{\mu}\_2 \end{bmatrix}$
-   and standard deviation
-   $\begin{bmatrix} \mathbf{\sigma}\_1,~\mathbf{\sigma}\_2 \end{bmatrix}$
-   of all point in the whole dataset:
-    
-   $$
-   \begin{bmatrix} \Delta \mathbf{x}\_{i},~\Delta \mathbf{y}\_{i} \end{bmatrix}=
-   \begin{bmatrix} \frac{\Delta \mathbf{x}\_{i} - \mu_1}{\sigma_1},
-   ~\frac{\Delta \mathbf{y}\_{i} - \mu_2}{\sigma_2} \end{bmatrix}
-   $$
+ In  order for the neural net to learn more effectively, we are going
+ to standarize each point by the mean
+ $\begin{bmatrix} \mathbf{\mu}\_1,~\mathbf{\mu}\_2 \end{bmatrix}$
+ and standard deviation
+ $\begin{bmatrix} \mathbf{\sigma}\_1,~\mathbf{\sigma}\_2 \end{bmatrix}$
+ of all point in the whole dataset:
 
-   It makes much sense when the mean and variance correspond to the
-   actual center and spread of the points (symmetrical) distribution.
+ <p>
+ $$
+ \begin{bmatrix} \Delta \mathbf{x}_{i},~\Delta \mathbf{y}_{i} \end{bmatrix}=
+ \begin{bmatrix} \frac{\Delta \mathbf{x}_{i} - \mu_1}{\sigma_1},
+ ~\frac{\Delta \mathbf{y}_{i} - \mu_2}{\sigma_2} \end{bmatrix}
+ $$
+ </p>
+
+ It makes much sense when the mean and variance correspond to the
+ actual center and spread of the points (symmetrical) distribution.
 
 So we pick the
 $\begin{bmatrix} \Delta \mathbf{x}\_{i},~\Delta \mathbf{y}\_{i} \end{bmatrix}$
@@ -248,12 +250,14 @@ For instance, it could be the the sum of the distances between each
 prediction $\mathcal{\hat Y_i}$ and its corresponding label
 $\mathcal{Y}_i$
 
+<p>
 $$
 \mathscr{L}(\mathcal{\hat{Y}},\mathcal{Y}) =
 \sum_{i=1}^{N-1}
-\sqrt{(\mathbf{\hat{x}}\_{i+1} - \mathbf{x}\_{i+1}) ^ 2 +
-(\mathbf{\hat{y}}\_{i+1} - \mathbf{y}\_{i+1}) ^ 2}
+\sqrt{(\mathbf{\hat{x}}_{i+1} - \mathbf{x}_{i+1}) ^ 2 +
+(\mathbf{\hat{y}}_{i+1} - \mathbf{y}_{i+1}) ^ 2}
 $$
+</p>
 
 The smaller the value of
 $\mathscr{L}(\mathcal{\hat Y},\mathcal{Y})$, the closest the
@@ -273,22 +277,26 @@ it possible to compare the losses across drawings.
 The resulting loss function is well-known and has its own name: it
 is the *mean squared error* ($MSE$):
 
+<p>
 $$
-MSE(\mathcal{\hat Y},\mathcal{Y}) =
+MSE(\hat{\mathcal{Y}},\mathcal{Y}) =
 \frac{1}{N - 1} \sum_{i=1}^{N-1}
-\left\[
-(\mathbf{\hat{x}}\_{i+1} - \mathbf{x}\_{i+1}) ^ 2 +
-(\mathbf{\hat{y}}\_{i+1} - \mathbf{y}\_{i+1}) ^ 2
-\right\]
+\left[
+(\mathbf{\hat{x}}_{i+1} - \mathbf{x}_{i+1}) ^ 2 +
+(\mathbf{\hat{y}}_{i+1} - \mathbf{y}_{i+1}) ^ 2
+\right]
 $$
+</p>
 
 To summarize, given a dataset of $M$ drawings $\mathcal{X}$ and their
 corresponding labels $\mathcal{Y}$, training $nn\_{\_W}$ means finding
 a set of weights $W_{optimal}$ such as:
 
+<p>
 $$
-W_{optimal} = \underset{W}{\argmin}~ \frac{1}{M} \sum_{(\mathcal{X},~\mathcal{Y})} MSE(nn\_{\_W}(\mathcal{X}),~\mathcal{Y})
+W_{optimal} = \underset{W}{\argmin}~ \frac{1}{M} \sum_{(\mathcal{X},~\mathcal{Y})} MSE(nn_{_W}(\mathcal{X}),~\mathcal{Y})
 $$
+</p>
 
 In practice, $W_{optimal}$ is computed by gradient descent. Broadly,
 the strategy is to build iteratively a sequence of weights $W_t$ that
@@ -296,13 +304,15 @@ hopefully converges to $W_{optimal}$. It's made possible for reasonable
 values of a parameter called the "learning rate" $\eta$, wich controls
 how aggressively $W_t$ is updated at each iteration:
 
+<p>
 $$
 \begin{aligned}
 W_{t+1} = W_t - \eta \times \frac{\partial \mathscr{L}}{\partial W_t}(\mathcal{\hat Y}, \mathcal{Y})
-\\\\\[3pt]
-\text{where }\mathcal{\hat Y} = nn\_{\_{~W_t}}(\mathcal{X})
+\\[5pt]
+\text{where }\mathcal{\hat Y} = nn_{_{~W_t}}(\mathcal{X})
 \end{aligned}
 $$
+</p>
 
 This equation (and a variety of subtler variations) powers the whole
 edifice of deep learning edifice, effectively allowing neural networks
@@ -474,11 +484,13 @@ That fake Effeil tower would be represented in the dataset as a list
 of three strokes between which the pencil is lifted
 $\mathcal{X} = \mathcal{S}_1,~\mathcal{S}_2,~\mathcal{S}_3$.
 
+<p>
 $$
-\mathcal{S}_1 = \mathcal{X}\_{1}~...~\mathcal{X}\_{7}~~~~~~~~~~~
-\mathcal{S}_2 = \mathcal{X}\_{8}~...~\mathcal{X}\_{10}~~~~~~~~~~~
-\mathcal{S}_3 = \mathcal{X}\_{11}~...~\mathcal{X}\_{14}
+\mathcal{S}_1 = \mathcal{X}_{1}~...~\mathcal{X}_{7}~~~~~~~~~~~
+\mathcal{S}_2 = \mathcal{X}_{8}~...~\mathcal{X}_{10}~~~~~~~~~~~
+\mathcal{S}_3 = \mathcal{X}_{11}~...~\mathcal{X}_{14}
 $$
+</p>
 
 <p style="text-align: center">
     <img src="/images/effeil_annotated.png" width="40%" />
@@ -495,13 +507,15 @@ So we'll have to flatten this representation somehow.
 We already went the most naive way, concatenating all strokes as one
 big stroke, and it did not go too well:
 
+<p>
 $$
 \mathcal{X} =
-\begin{bmatrix} \mathbf{x}_1 & ... & \mathbf{x}_7 & \mathbf{x}_8 & ... & \mathbf{x}\_{10} & \mathbf{x}\_{11} & ... & \mathbf{x}\_{14}
-\\\\
-\mathbf{y}_1 & ... & \mathbf{y}_7 & \mathbf{y}_8 & ... & \mathbf{y}\_{10} & \mathbf{y}\_{11} & ... & \mathbf{y}\_{14}
+\begin{bmatrix} \mathbf{x}_1 ~~ ... ~~ \mathbf{x}_7 ~~ \mathbf{x}_8 ~~ ... ~~ \mathbf{x}_{10} ~~ \mathbf{x}_{11} ~~ ... ~~ \mathbf{x}_{14}
+\\
+\mathbf{y}_1 ~~ ... ~~ \mathbf{y}_7 ~~ \mathbf{y}_8 ~~ ... ~~ \mathbf{y}_{10} ~~ \mathbf{y}_{11} ~~ ... ~~ \mathbf{y}_{14}
 \end{bmatrix}
 $$
+</p>
 
 <p style="text-align: center">
     <img src="/images/effeil_continuous.gif" />
@@ -512,13 +526,15 @@ to inform the model where the pencil should be lifted.
 $\mathbf{\delta}$ should be big enough in absolute value so that is
 does not conflict with regular points components.
 
+<p>
 $$
 \mathcal{X} =
-\begin{bmatrix} \mathbf{x}_1 & ... & \mathbf{x}_7 & \mathbf{\delta} & \mathbf{x}_8 & ... & \mathbf{x}\_{10} & \mathbf{\delta} & \mathbf{x}\_{11} & ... & \mathbf{x}\_{14}
-\\\\
-\mathbf{y}_1 & ... & \mathbf{y}_7 & \mathbf{\delta} & \mathbf{y}_8 & ... & \mathbf{y}\_{10} & \mathbf{\delta} & \mathbf{y}\_{11} & ... & \mathbf{y}\_{14}
+\begin{bmatrix} \mathbf{x}_1 ~~ ... ~~ \mathbf{x}_7 ~~ \mathbf{\delta} ~~ \mathbf{x}_8 ~~ ... ~~ \mathbf{x}_{10} ~~ \mathbf{\delta} ~~ \mathbf{x}_{11} ~~ ... ~~ \mathbf{x}_{14}
+\\
+\mathbf{y}_1 ~~ ... ~~ \mathbf{y}_7 ~~ \mathbf{\delta} ~~ \mathbf{y}_8 ~~ ... ~~ \mathbf{y}_{10} ~~ \mathbf{\delta} ~~ \mathbf{y}_{11} ~~ ... ~~ \mathbf{y}_{14}
 \end{bmatrix}
 $$
+</p>
 
 That could potentially work, but the weird non-continuous behaviour
 introduced would almost certainly confuse the model. Moreover, how
@@ -535,28 +551,30 @@ dimensions summing to 1, let's intercalate the complementary "regular
 point" dimension $\mathbf{p_3}$, better described as "neither end of
 stroke nor end of drawing":
 
+<p>
 $$
 \mathcal{X} =
-\begin{bmatrix} \mathbf{x}_1 & ... & \mathbf{x}_7 & \mathbf{x}_8 & ... & \mathbf{x}\_{10} & \mathbf{x}\_{11} & ... & \mathbf{x}\_{14}
-\\\\
-\mathbf{y}_1 & ... & \mathbf{y}_7 & \mathbf{y}_8 & ... & \mathbf{y}\_{10} & \mathbf{y}\_{11} & ... & \mathbf{y}\_{14}
-\\\\
+\begin{bmatrix} \mathbf{x}_1 & ... & \mathbf{x}_7 & \mathbf{x}_8 & ... & \mathbf{x}_{10} & \mathbf{x}_{11} & ... & \mathbf{x}_{14}
+\\
+\mathbf{y}_1 & ... & \mathbf{y}_7 & \mathbf{y}_8 & ... & \mathbf{y}_{10} & \mathbf{y}_{11} & ... & \mathbf{y}_{14}
+\\
 1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0
-\\\\
+\\
 0 &  0 & 1 & 0 & 0 & 1 & 0 & 0 & 0
-\\\\
+\\
 0 &  0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
 \end{bmatrix}
 \begin{matrix}
-\\\\
-\\\\
+\\
+\\
 \leftarrow\footnotesize{\mathbf{p_1}\text{: is regular point?~~~~~~~~~~~~~~}}
-\\\\
-\leftarrow\footnotesize{\mathbf{p_2}\text{: is end-of-stroke point?\~\~~}}
-\\\\
+\\
+\leftarrow\footnotesize{\mathbf{p_2}\text{: is end-of-stroke point?~~~}}
+\\
 \leftarrow\footnotesize{\mathbf{p_3}\text{: is end-of-drawing point?}}
 \end{matrix}
 $$
+</p>
 
 We name $\begin{bmatrix} \mathbf{x}_i,~\mathbf{y}_i \end{bmatrix}$
 the *trajectory* and
@@ -580,19 +598,21 @@ $\mathcal{\hat Y}_i = \begin{bmatrix} \mathbf{\hat x}\_{i+1},~\mathbf{\hat y}\_{
 $\mathcal{Y}_i = \begin{bmatrix} \mathbf{x}\_{i+1},~\mathbf{y}\_{i+1},
 \mathbf{p_1}\_{i+1},~\mathbf{p_2}\_{i+1},~\mathbf{p_3}\_{i+1} \end{bmatrix}$ using the 5-dimensional $MSE$:
 
+<p>
 $$
 \begin{aligned}	
 MSE&(\mathcal{\hat{Y}},\mathcal{Y})=	
-\frac{1}{N}\sum\_{i=1}^N	
-(\mathbf{\hat{x}}\_{i+1} - \mathbf{x}\_{i+1}) ^ 2 +	
-(\mathbf{\hat{y}}\_{i+1} - \mathbf{y}\_{i+1}) ^ 2~+	
-\\\\	
-&+ \frac{1}{N}\sum\_{i=1}^N	
-(\tilde{\mathbf{p_1}}\_{i+1} - \mathbf{p_1}\_{i+1}) ^ 2 +	
-(\tilde{\mathbf{p_2}}\_{i+1} - \mathbf{p_2}\_{i+1}) ^ 2 +	
-(\tilde{\mathbf{p_3}}\_{i+1} - \mathbf{p_3}\_{i+1}) ^ 2	
+\frac{1}{N}\sum_{i=1}^N	
+(\mathbf{\hat{x}}_{i+1} - \mathbf{x}_{i+1}) ^ 2 +	
+(\mathbf{\hat{y}}_{i+1} - \mathbf{y}_{i+1}) ^ 2~+	
+\\
+&+ \frac{1}{N}\sum_{i=1}^N	
+(\tilde{\mathbf{p_1}}_{i+1} - \mathbf{p_1}_{i+1}) ^ 2 +	
+(\tilde{\mathbf{p_2}}_{i+1} - \mathbf{p_2}_{i+1}) ^ 2 +	
+(\tilde{\mathbf{p_3}}_{i+1} - \mathbf{p_3}_{i+1}) ^ 2	
 \end{aligned}
 $$
+</p>
 
 At this point, the reader accustomed to fitting classification models
 may wonder "what's this guy even doing? MSE as classification loss?
@@ -628,9 +648,11 @@ as such:
 For normalization, we're going to use the softmax function for
 normalization:
 
+<p>
 $$
-\text{softmax}\_{\_{T_\mathbf{p}}}(\tilde{\mathbf{p\_k}}) = \frac{\exp(\tilde{\mathbf{p}\_{k}}~/~T_\mathbf{p})}{\sum\limits\_{k=1}^3 \exp(\tilde{\mathbf{p\_k}}~/~T_\mathbf{p})},~~k=1..3
+\text{softmax}_{_{T_\mathbf{p}}}(\tilde{\mathbf{p_k}}) = \frac{\exp(\tilde{\mathbf{p}_{k}}~/~T_\mathbf{p})}{\sum\limits_{k=1}^3 \exp(\tilde{\mathbf{p_k}}~/~T_\mathbf{p})},~~k=1..3
 $$
+</p>
 
 $T_\mathbf{p}$ is a generation parameter called *temperature*. It defines how
 harsh the softmax is at amplifying the difference between the
@@ -650,9 +672,9 @@ Or more concretely with actual Effeil towers generation:
     <img src="/images/generated/base_effeil_temperature_stroke_state.png" width="85%" />
 </p>
 
-At low temperature ($T_\mathbf{p} = 0.1$), the model does not take any risk
-and consistently outputs the stroke state most represented in the data
-: *regular point*, or $\begin{bmatrix} 1,~0,~0 \end{bmatrix}$, ending
+At low temperature ($T_\mathbf{p} = 0.1$), the model does not take any
+risk and consistently outputs the stroke state most represented in the
+data: *regular point*, or $\begin{bmatrix} 1,~0,~0 \end{bmatrix}$, ending
 up with a drawing that continues indefinitely without lifting the
 pencil once, much like our former trajectory-only model. When
 temperature goes up, the model dares sampling more and more of the
@@ -694,9 +716,11 @@ is modelled.
 Currently, ignoring the hidden state, the model deterministically
 outputs a prediction for the next vector:
 
+<p>
 $$
-\mathcal{\hat{Y}_i} = lstm\_{\_W}(\mathcal{X_i})
+\mathcal{\hat{Y}_i} = lstm_{_W}(\mathcal{X_i})
 $$
+</p>
 
 Guess what? We are going to apply the same idea as for the stroke
 state. Instead of flat out predicting the next vector
@@ -709,10 +733,12 @@ training by building a loss based on it. This fundamental idea leads to
 an extension of neural networks known as "mixture density networks"
 (MDNs).
 
+<p>
 $$
-\mathcal{\tilde{Y}\_i} = \begin{bmatrix} \mathbf{\mu\_x}\_{\_{i+1}},~\mathbf{\mu\_y}\_{\_{i+1}},~\mathbf{\sigma\_x}\_{\_{i+1}},~\mathbf{\sigma\_y}\_{\_{i+1}},~\mathbf{\rho\_{xy}}\_{\_{i+1}}
-\end{bmatrix} = lstm\_{\_W}(\mathcal{X_i})
+\mathcal{\tilde{Y}_i} = \begin{bmatrix} \mathbf{\mu_x}_{_{i+1}},~\mathbf{\mu_y}_{_{i+1}},~\mathbf{\sigma_x}_{_{i+1}},~\mathbf{\sigma_y}_{_{i+1}},~\mathbf{\rho_{xy}}_{_{i+1}}
+\end{bmatrix} = lstm_{_W}(\mathcal{X_i})
 $$
+</p>
 
 In order to make the next equations a little tidier, let's temporarily
 omit the annoying $\_{i+1}$ indices by setting
@@ -748,39 +774,38 @@ centered at
 $\mathbf{\mu}\_{i+1} = \begin{bmatrix} \mu\_x,~\mu\_y \end{bmatrix}$
 with covariance matrix 
 $\Sigma_{i+1} = \begin{bmatrix}
-\sigma\_x^2 & \rho\_{xy} \sigma_x \sigma_y
-\\\\
-\rho\_{xy} \sigma\_x \sigma\_y & \sigma\_x^2
+\sigma_x^2 & \rho_{xy} \sigma_x \sigma_y \\\ \rho_{xy} \sigma_x \sigma_y & \sigma_x^2
 \end{bmatrix}$.
-.
 
 <p style="text-align: center">
     <img src="/images/mdn_trajectory.png" width="50%" />
 </p>
 
+<p>
 $$
 \begin{aligned}
 &\begin{bmatrix}
-\mathbf{\mu\_x},~\mathbf{\mu\_y},~\mathbf{\sigma\_x},~\mathbf{\sigma\_y},~\mathbf{\rho\_{xy}}
+\mathbf{\mu_x},~\mathbf{\mu_y},~\mathbf{\sigma_x},~\mathbf{\sigma_y},~\mathbf{\rho_{xy}}
 \end{bmatrix},~\mathbf{h}_{i+1} =
-lstm\_{\_W}(\mathcal{X_i},~\mathbf{h}_i)
-\\\\\[5pt]
-&\hat{\mathcal{Y}}_i \sim \mathcal{N}(\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1})
-\\\\\[5pt]
+lstm_{_W}(\mathcal{X_i},~\mathbf{h}_i)
+\\[5pt]
+&\hat{\mathcal{Y}}_i \sim \mathcal{N}(\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1})
+\\[5pt]
 &\text{ where }
 \begin{cases}
-\mathbf{\mu}\_{i+1} = \begin{bmatrix}
-\mathbf{\mu}\_x,~\mathbf{\mu\_y}
+\mathbf{\mu}_{i+1} = \begin{bmatrix}
+\mathbf{\mu}_x,~\mathbf{\mu_y}
 \end{bmatrix}
-\\\\\[5pt]
-\mathbf{\Sigma}\_{i+1} = T\_{xy} \times \begin{bmatrix}
-\mathbf{\sigma\_x}^2 & \mathbf{\rho\_{xy}} \mathbf{\sigma_x} \mathbf{\sigma_y}
-\\\\
-\mathbf{\rho\_{xy}} \mathbf{\sigma\_x} \mathbf{\sigma\_y} & \mathbf{\sigma\_x}^2
+\\[5pt]
+\mathbf{\Sigma}_{i+1} = T_{xy} \times \begin{bmatrix}
+\mathbf{\sigma_x}^2 & \mathbf{\rho_{xy}} \mathbf{\sigma_x} \mathbf{\sigma_y}
+\\
+\mathbf{\rho_{xy}} \mathbf{\sigma_x} \mathbf{\sigma_y} & \mathbf{\sigma_x}^2
 \end{bmatrix}
 \end{cases}
 \end{aligned}
 $$
+</p>
 
 It order gain the same flexibility for trajectory generation as we had
 for stroke state generation, let's scale the spread of the distribution
@@ -820,17 +845,19 @@ $p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}$
 of normal distribution
 $\mathcal{N}(\mathbf{\mu}\_{i+1}, \mathbf{\Sigma}\_{i+1})$:
 
+<p>
 $$
 p_{\mathbf{\mu},~\mathbf{\Sigma}}(x, y) =
   \frac{1}{2 \pi \mathbf{\sigma_x} \mathbf{\sigma_y} \sqrt{1-\mathbf{\rho_{xy}}^2}}
   \exp\left(
-    -\frac{1}{2(1-\mathbf{\rho_{xy}}^2)}\left\[
-      \frac{(x-\mathbf{\mu_x})^2}{\mathbf{\sigma_x}^2} +
-      \frac{(y-\mathbf{\mu_y})^2}{\mathbf{\sigma_y}^2} -
-      \frac{2\mathbf{\rho_{xy}}(x-\mathbf{\mu_y})(y-\mathbf{\mu_y})}{\mathbf{\sigma_x} \mathbf{\sigma_y}}
+    -\frac{1}{2(1-\mathbf{\rho_{xy}}^2)}\left[
+      \frac{(x-\mathbf{\mu_x})^2}{\mathbf{\sigma_x}^2}
+      +\frac{(y-\mathbf{\mu_y})^2}{\mathbf{\sigma_y}^2}
+      -\frac{2\mathbf{\rho_{xy}}(x-\mathbf{\mu_y})(y-\mathbf{\mu_y})}{\mathbf{\sigma_x} \mathbf{\sigma_y}}
     \right]
   \right)
 $$
+</p>
 
 By the very definition of continuous probability distribution, the
 larger the value of
@@ -856,10 +883,12 @@ $\mathcal{Y} = \mathcal{Y}_1,~...,~\mathcal{Y}_N$
 and models outputs
 $\mathcal{Y} = \begin{bmatrix} \mathbf{\mu}\_1,~\mathbf{\Sigma}\_1 \end{bmatrix}, ..., \begin{bmatrix} \mathbf{\mu}\_N,~\mathbf{\Sigma}\_N \end{bmatrix}$ by defining the likelihood function:
 
+<p>
 $$
-\mathcal{L}(\mathcal{Y}\~;\~\mu, \mathbf{\Sigma}) =
-\prod\_{i=1}^N p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
+\mathcal{L}(\mathcal{Y}~;~\mu, \mathbf{\Sigma}) =
+\prod_{i=1}^N p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
 $$
+</p>
 
 At this point, we're almost done, since — assuming independence of
 the $\mathcal{Y}_i$'s — maximizing this quantity (a process known as
@@ -876,31 +905,33 @@ a loss, please consider the two following properties of $\argmax$:
 
 So:
 
+<p>
 $$
 \begin{aligned}
 W_{optimal} =~&
 \underset{W}{\argmax}
-\prod\_{i=1}^N p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
-\\\\
+\prod_{i=1}^N p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
+\\
 \underset{\log}{=}~&
 \underset{W}{\argmax}~
-\log \left( \prod\_{i=1}^N p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
+\log \left( \prod_{i=1}^N p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
 \right)
-\\\\
+\\
 =~&
 \underset{W}{\argmax}
-\sum\_{i=1}^N \log p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
-\\\\
+\sum_{i=1}^N \log p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
+\\
 \underset{\times \frac{1}{N}}{=}~&
 \underset{W}{\argmax} \frac{1}{N}
-\sum\_{i=1}^N \log p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
-\\\\
-W\_{optimal}
+\sum_{i=1}^N \log p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
+\\
+W_{optimal}
 \underset{\times \text{-}1}{=}~&
 \underset{W}{\argmin} \frac{1}{N}
-\sum\_{i=1}^N \log p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
+\sum_{i=1}^N \log p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
 \end{aligned}
 $$
+</p>
 
 We're left with the minimization of a function with respect to
 its parameters given the labels and model. Does that ring a bell?
@@ -911,32 +942,38 @@ Victory!
 
 Omitting the hidden state:
 
+<p>
 $$
 \mathscr{L}(\tilde{\mathcal{Y}},\mathcal{Y}) =
-\frac{1}{N} \sum\_{i=1}^N \log p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}(\mathcal{Y}_i)
-\\\\\[5pt]
+\frac{1}{N} \sum_{i=1}^N \log p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}_{i+1}}(\mathcal{Y}_i)
+\\[5pt]
 \text{where }
 \tilde{\mathcal{Y}} = \begin{bmatrix} \mathbf{\mu},~\mathbf{\Sigma} \end{bmatrix} =
-lstm\_{\_W}(\mathcal{X})
+lstm_{_W}(\mathcal{X})
 $$
+</p>
 
-Or, replacing
-$p\_{\mathbf{\mu}\_{i+1},~\mathbf{\Sigma}\_{i+1}}$
-with its actual equation:
+Or, replacing $p_{\mathbf{\mu}_{i+1},~\mathbf{\Sigma}\_{i+1}}$ with its
+actual equation:
 
+<p>
 $$
+\begin{aligned}
 \mathscr{L}(\tilde{\mathcal{Y}},\mathcal{Y}) =
-\frac{1}{N}\sum\_{i=1}^N
-log(2 \pi \mathbf{\sigma_x}\_{\_{i+1}} \mathbf{\sigma_y}\_{\_{i+1}} \sqrt{1-{\mathbf{\rho_{xy}}\_{\_{i+1}}}^2}) + 
-\frac{(\mathbf{x}\_{i+1}-\mathbf{\mu_x}\_{\_{i+1}})^2}{\mathbf{\sigma_x^2}\_{\_{i+1}}} +
-\frac{(\mathbf{y}\_{i+1}-\mathbf{\mu_y}\_{\_{i+1}})^2}{\mathbf{\sigma_y^2}\_{\_{i+1}}} -
-\frac{2 \mathbf{\rho\_{xy}}\_{\_{i+1}}(\mathbf{x}\_{i+1}-\mathbf{\mu_y}\_{i+1})(\mathbf{y}\_{i+1}-\mathbf{\mu_y}\_{i+1})}{\mathbf{\sigma_x} \_{i+1}\mathbf{\sigma_y}\_{i+1}}
-\\\\\[5pt]
+\frac{1}{N}\sum_{i=1}^N ~
+log(2 \pi \mathbf{\sigma_x}_{_{i+1}} \mathbf{\sigma_y}_{_{i+1}} \sqrt{1-{\mathbf{\rho_{xy}}_{_{i+1}}}^2})
+&+ \frac{(\mathbf{x}_{i+1}-\mathbf{\mu_x}_{_{i+1}})^2}{\mathbf{\sigma_x^2}_{_{i+1}}}
++ \frac{(\mathbf{y}_{i+1}-\mathbf{\mu_y}_{_{i+1}})^2}{\mathbf{\sigma_y^2}_{_{i+1}}}
+\\
+&- ~ \frac{2 \mathbf{\rho_{xy}}_{_{i+1}}(\mathbf{x}_{i+1}-\mathbf{\mu_y}_{i+1})(\mathbf{y}_{i+1}-\mathbf{\mu_y}_{i+1})}{\mathbf{\sigma_x} _{i+1}\mathbf{\sigma_y}_{i+1}}
+\end{aligned}
+\\[5pt]
 \text{where }
 \begin{bmatrix} \mathbf{\mu_x},~\mathbf{\mu_y},~\mathbf{\sigma_x},~\mathbf{\sigma_{y}},~\mathbf{\rho_{xy}}
 \end{bmatrix} =
-lstm\_{\_W}(\mathcal{X})
+lstm_{_W}(\mathcal{X})
 $$
+</p>
 
 Rather scary, heh? Especially as compared to our previous MSE. But now,
 not only are we optimizing the center of the predictions
@@ -952,37 +989,41 @@ covariance matrices
 $\Sigma = \begin{bmatrix} \mathbf{\sigma}^2 & 0 \\\\ 0 & \mathbf{\sigma}^2 \end{bmatrix}$
 and the following loss:
 
+<p>
 $$
 \mathscr{L}(\tilde{\mathcal{Y}},~\mathcal{Y}) =
-\frac{1}{N}\sum\_{i=1}^N
+\frac{1}{N}\sum_{i=1}^N
 log(2 \pi) +
-\frac{1}{\sigma} \left\[
-(\mathbf{x}\_{i+1} - \mathbf{\mu_x}\_{\_{i+1}})^2 +
-(\mathbf{y}\_{i+1} - \mathbf{\mu_y}\_{\_{i+1}})^2
-\right\]
-\\\\\[5pt]
+\frac{1}{\sigma} \left[
+(\mathbf{x}_{i+1} - \mathbf{\mu_x}_{_{i+1}})^2 +
+(\mathbf{y}_{i+1} - \mathbf{\mu_y}_{_{i+1}})^2
+\right]
+\\[5pt]
 \text{where }
-\tilde{\mathcal{Y}}_i = \begin{bmatrix} \mathbf{\mu\_x}\_{\_{i+1}},~\mathbf{\mu\_y}\_{\_{i+1}}
+\tilde{\mathcal{Y}}_i = \begin{bmatrix} \mathbf{\mu_x}_{_{i+1}},~\mathbf{\mu_y}_{_{i+1}}
 \end{bmatrix} =
-lstm\_{\_W}(\mathcal{X_i})
+lstm_{_W}(\mathcal{X_i})
 $$
+</p>
 
 Since we are minimizing $\mathscr{L}(\mathcal{\hat{Y}},\mathcal{Y})$,
 the constant terms $log(2 \pi)$ and $\frac{1}{\sigma}$ can be safely
 removed. Furthermore, assuming the predictions are directly the output
 centers from the model ($\tilde{\mathcal{Y}} = \hat{\mathcal{Y}}$):
 
+<p>
 $$
 \begin{aligned}
 &\mathscr{L}(\mathcal{\hat{Y}},\mathcal{Y}) =
-\frac{1}{N}\sum\_{i=1}^N
-(\mathbf{x}\_{i+1} - \mathbf{x}\_{i+1})^2 +
-(\mathbf{y}\_{i+1} - \mathbf{y}\_{i+1})^2
-\\\\
+\frac{1}{N}\sum_{i=1}^N
+(\mathbf{x}_{i+1} - \mathbf{x}_{i+1})^2 +
+(\mathbf{y}_{i+1} - \mathbf{y}_{i+1})^2
+\\
 &\mathscr{L}(\mathcal{\hat{Y}},\mathcal{Y}) =
 MSE(\mathcal{\hat{Y}},\mathcal{Y})
 \end{aligned}
 $$
+</p>
 
 We're coming full circle, but with a fundamental insight: the mean
 squared error is not just the average of the squared euclidian distance
@@ -1014,16 +1055,18 @@ the corresponding label
 $\mathcal{Y}\_{i} = \mathbf{p}\_{i+1} = \begin{bmatrix} \mathbf{p_1}\_{i+1},~\mathbf{p_2}\_{i+1},~\mathbf{p_3}\_{i+1} \end{bmatrix}$
 in a straigtforward manner:
 
+<p>
 $$
-p_{\tilde{\mathbf{p}}\_{i+1}}(\mathcal{Y}_i) =
+p_{\tilde{\mathbf{p}}_{i+1}}(\mathcal{Y}_i) =
 \begin{cases}
-{\tilde{\mathbf{p_1}}\_{i+1}} \text{ if } \mathcal{Y}_i = \begin{bmatrix} 1,0,0 \end{bmatrix}
-\\\\
-{\tilde{\mathbf{p_2}}\_{i+1}} \text{ if } \mathcal{Y}_i = \begin{bmatrix} 0,1,0 \end{bmatrix}
-\\\\
-{\tilde{\mathbf{p_3}}\_{i+1}} \text{ if } \mathcal{Y}_i = \begin{bmatrix} 0,0,1 \end{bmatrix}
+{\tilde{\mathbf{p_1}}_{i+1}} \text{ if } \mathcal{Y}_i = \begin{bmatrix} 1,0,0 \end{bmatrix}
+\\
+{\tilde{\mathbf{p_2}}_{i+1}} \text{ if } \mathcal{Y}_i = \begin{bmatrix} 0,1,0 \end{bmatrix}
+\\
+{\tilde{\mathbf{p_3}}_{i+1}} \text{ if } \mathcal{Y}_i = \begin{bmatrix} 0,0,1 \end{bmatrix}
 \end{cases}
 $$
+</p>
 
 In plain English, $p_{\tilde{\mathbf{p}}\_{i+1}}(\mathcal{Y}_i)$
 is the probability outputed by the model for the correct class. The
@@ -1031,19 +1074,23 @@ higher, the better.
 
 It can be pleasantly rewritten as:
 
+<p>
 $$
-p_{\tilde{\mathbf{p}}\_{i+1}}(\mathcal{Y}\_i) = \prod_{k=1}^3 \tilde{\mathbf{p_k}}\_{i+1}^{\mathbf{p_k}\_{i+1}}
+p_{\tilde{\mathbf{p}}_{i+1}}(\mathcal{Y}_i) = \prod_{k=1}^3 \tilde{\mathbf{p_k}}_{i+1}^{\mathbf{p_k}_{i+1}}
 $$
+</p>
 
 By the same derivation as for the trajectory, assuming independance of
 the $\mathcal{Y}_i$'s, we end up with a loss as standard as the MSE,
 but for classification. It is the *cross-entropy* loss:
 
+<p>
 $$
 \begin{aligned}
-\mathscr{L}(\tilde{\mathcal{Y}}, \mathcal{Y}) = - \frac{1}{N} \sum_{i=1}^N \sum_{k=1}^3 \mathbf{p_k}\_{i+1} \log(\tilde{\mathbf{p_k}}\_{i+1})
+\mathscr{L}(\tilde{\mathcal{Y}}, \mathcal{Y}) = - \frac{1}{N} \sum_{i=1}^N \sum_{k=1}^3 \mathbf{p_k}_{i+1} \log(\tilde{\mathbf{p_k}}_{i+1})
 \end{aligned}
 $$
+</p>
 
 # Third generated drawings
 
@@ -1055,35 +1102,44 @@ $\tilde{\mathcal{Y}}\_i = \begin{bmatrix} \mathbf{\mu\_x}\_{\_{i+1}},~\mathbf{\m
 \end{bmatrix}$
 and a hidden state vector:
 
+<p>
 $$
-\tilde{\mathcal{Y}}_i,~\mathbf{h}\_{i+1} = lstm\_{\_W}(\mathcal{X_i}, \mathbf{h}_i)
+\tilde{\mathcal{Y}}_i,~\mathbf{h}_{i+1} = lstm_{_W}(\mathcal{X_i}, \mathbf{h}_i)
 $$
+</p>
 
 It is trained by matching its outputs against the corresponding labels
-$\mathcal{Y}\_i = \begin{bmatrix} \mathbf{x}\_{i+1},~\mathbf{y}\_{i+1},~\mathbf{p_1}\_{i+1},~\mathbf{p_2}\_{i+1},~\mathbf{p_3}\_{i+1} \end{bmatrix}$
+$\mathcal{Y}\_i = \begin{bmatrix} \mathbf{x}\_{i+1},~\mathbf{y}\_{i+1},~\mathbf{p_1}_{i+1},~\mathbf{p_2}\_{i+1},~\mathbf{p_3}\_{i+1} \end{bmatrix}$
 using the half-regression half-regression loss:
 
+<p>
 $$
 \begin{aligned}
-\mathscr{L}(\tilde{\mathcal{Y}}\_i,~\mathcal{Y}\_i) =&
--\frac{1}{N}\sum\_{i=1}^N
-log(2 \pi \mathbf{\sigma_x}\_{\_{i+1}} \mathbf{\sigma_y}\_{\_{i+1}} \sqrt{1-\mathbf{\rho_{xy}}\_{\_{i+1}}^2}) + 
-\frac{(\mathbf{x}\_{i+1}-\mathbf{\mu_x}\_{\_{i+1}})^2}{\mathbf{\sigma_x}\_{\_{i+1}}^2} +
-\frac{(\mathbf{y}\_{i+1}-\mathbf{\mu_y}\_{\_{i+1}})^2}{\mathbf{\sigma_y}\_{\_{i+1}}^2} -
-\frac{2\mathbf{\rho_{xy}}\_{\_{i+1}}(\mathbf{x}\_{i+1}-\mathbf{\mu_x}\_{\_{i+1}})(\mathbf{y}\_{i+1}-\mathbf{\mu_y}\_{\_{i+1}})}{\mathbf{\sigma_x}\_{\_{i+1}} \mathbf{\sigma_y}\_{\_{i+1}}}
-\\\\
-&- \frac{1}{N} \sum_{i=1}^N \sum_{k=1}^3 \mathbf{p_k}\_{i+1} \log(\tilde{\mathbf{p_k}}\_{i+1})
+\mathscr{L}(\tilde{\mathcal{Y}}_i,~\mathcal{Y}_i) =&
+-\frac{1}{N}\sum_{i=1}^N
+log(2 \pi \mathbf{\sigma_x}_{_{i+1}} \mathbf{\sigma_y}_{_{i+1}} \sqrt{1-\mathbf{\rho_{xy}}_{_{i+1}}^2})
+\\
+&+ \frac{1}{N}\sum_{i=1}^N
+\frac{(\mathbf{x}_{i+1}-\mathbf{\mu_x}_{_{i+1}})^2}{\mathbf{\sigma_x}_{_{i+1}}^2}
++ \frac{(\mathbf{y}_{i+1}-\mathbf{\mu_y}_{_{i+1}})^2}{\mathbf{\sigma_y}_{_{i+1}}^2}
+\\
+&-\frac{1}{N}\sum_{i=1}^N \frac{2\mathbf{\rho_{xy}}_{_{i+1}}(\mathbf{x}_{i+1}-\mathbf{\mu_x}_{_{i+1}})(\mathbf{y}_{i+1}-\mathbf{\mu_y}_{_{i+1}})}{\mathbf{\sigma_x}_{_{i+1}} \mathbf{\sigma_y}_{_{i+1}}}
+\\
+&- \frac{1}{N} \sum_{i=1}^N \sum_{k=1}^3 \mathbf{p_k}_{i+1} \log(\tilde{\mathbf{p_k}}_{i+1})
 \end{aligned}
 $$
+</p>
 
 Generation is achieved by sampling the next trajectory and stroke state
 $\hat{\mathcal{Y}}\_i = \begin{bmatrix} \hat{\mathbf{x}}\_{i+1},~\hat{\mathbf{y}}\_{i+1},~\hat{\mathbf{p_1}}\_{i+1},~\hat{\mathbf{p_2}}\_{i+1},~\hat{\mathbf{p_3}}\_{i+1} \end{bmatrix}$
 from the resulting probability distributions at given temperatures
 $T_\mathbf{xy}$ and $T_\mathbf{p}$:
 
+<p>
 $$
-\hat{\mathcal{Y}}_i \sim \mathcal{N}(\begin{bmatrix} \mathbf{\mu\_x}\_{\_{i+1}},~\mathbf{\mu\_y}\_{\_{i+1}} \end{bmatrix}, \begin{bmatrix} \mathbf{\sigma\_x}\_{\_{i+1}},~\mathbf{\sigma\_y}\_{\_{i+1}},~\mathbf{\rho\_{xy}}\_{\_{i+1}} \end{bmatrix}) \times \mathcal{P}(\begin{bmatrix} \tilde{\mathbf{p_1}}\_{i+1},~\tilde{\mathbf{p_2}}\_{i+1},~\tilde{\mathbf{p_3}}\_{i+1} \end{bmatrix})
-$$ 
+\hat{\mathcal{Y}}_i \sim \mathcal{N}(\begin{bmatrix} \mathbf{\mu_x}_{_{i+1}},~\mathbf{\mu_y}_{_{i+1}} \end{bmatrix}, \begin{bmatrix} \mathbf{\sigma_x}_{_{i+1}},~\mathbf{\sigma_y}_{_{i+1}},~\mathbf{\rho_{xy}}_{_{i+1}} \end{bmatrix}) \times \mathcal{P}(\begin{bmatrix} \tilde{\mathbf{p_1}}_{i+1},~\tilde{\mathbf{p_2}}_{i+1},~\tilde{\mathbf{p_3}}_{i+1} \end{bmatrix})
+$$
+</p>
 
 <p style="text-align: center">
     <img src="/images/mdn_full.png" width="80%" />
@@ -1142,9 +1198,11 @@ $\sum_{k=1}^K {\mathbf{\pi}\_k}\_{\_{i+1}} = 1$ by passing
 them through a softmax conditioned on the trajectory temperature
 $T_\mathbf{xy}$:
 
+<p>
 $$
-{\mathbf{\pi}\_k}\_{\_{i+1}} = \frac{\exp({\mathbf{\pi}\_k}\_{\_{i+1}}~/~T_\mathbf{xy})}{\sum\limits\_{k=1}^3 \exp({\mathbf{\pi}\_k}\_{\_{i+1}}~/~T_\mathbf{xy})},~~k=1..K
+{\mathbf{\pi}_k}_{_{i+1}} = \frac{\exp({\mathbf{\pi}_k}_{_{i+1}}~/~T_\mathbf{xy})}{\sum\limits_{k=1}^3 \exp({\mathbf{\pi}_k}_{_{i+1}}~/~T_\mathbf{xy})},~~k=1..K
 $$
+</p>
 
 Sampling goes as follow: pick up one of the $K$ normals
 ${\mathbf{\mu}\_k}\_{\_{i+1}}, {\mathbf{\Sigma}\_k}\_{\_{i+1}}$ and
@@ -1169,20 +1227,20 @@ alone!
 As a last step, we have to derive a loss for the GMM-modelled
 trajectory. It turns out to be a pretty straigtforward extension of
 the previous loss, given the density
-{% raw %}
-$p\_{{\mathbf{\mu}\_k}\_{\_{i+1}},~{\mathbf{\Sigma}\_k}\_{\_{i+1}}}(\mathcal{Y}_i)$
-{% endraw %}
+{% raw %}$p\_{{\mathbf{\mu}\_k}\_{\_{i+1}},~{\mathbf{\Sigma}\_k}\_{\_{i+1}}}(\mathcal{Y}\_i)${% endraw %}
 of the $k$-th normal for the $i$-th output:
 
+<p>
 {% raw %}
 $$
-\mathscr{L}(\tilde{\mathcal{Y}},~\mathcal{Y}) = \frac{1}{N} \sum\_{i=1}^N \sum\_{k=1}^K {\mathbf{\pi}\_k}\_{\_{i+1}} \log p\_{{\mathbf{\mu}\_k}\_{\_{i+1}},~{\mathbf{\Sigma}\_k}\_{\_{i+1}}}(\mathcal{Y}_i)
-\\\\\[5pt]
+\mathscr{L}(\tilde{\mathcal{Y}},~\mathcal{Y}) = \frac{1}{N} \sum_{i=1}^N \sum_{k=1}^K {\mathbf{\pi}_k}_{_{i+1}} \log p_{{\mathbf{\mu}_k}_{_{i+1}},~{\mathbf{\Sigma}_k}_{_{i+1}}}(\mathcal{Y}_i)
+\\[5pt]
 \text{where }
-\tilde{\mathcal{Y}} = \begin{bmatrix} \mathbf{\mu}\_{\_{i+1}},~\mathbf{\Sigma}\_{\_{i+1}},~\mathbf{\pi}\_{\_{i+1}} \end{bmatrix} =
-lstm\_{\_W}(\mathcal{X})
+\tilde{\mathcal{Y}} = \begin{bmatrix} \mathbf{\mu}_{_{i+1}},~\mathbf{\Sigma}_{_{i+1}},~\mathbf{\pi}_{_{i+1}} \end{bmatrix} =
+lstm_{_W}(\mathcal{X})
 $$
 {% endraw %}
+</p>
 
 This time, we're definitively done. This model for unconditional
 generation of drawings is the same as in the paper.
