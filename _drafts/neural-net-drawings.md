@@ -38,10 +38,12 @@ surpassed the teacher.
     </a>
 </p>
 
-<small>Note: Throughout the article, everytime I include a series
+<p style="font-size: smaller;">
+Note: Throughout the article, everytime I include a series
 of drawings that I obviously selected carefully, the image links to
 the larger series they were choosen from. Feel free to click it to
-see how much I'm cheating you (or not).</small>
+see how much I'm cheating you (or not).
+</p>
 
 In the dataset, drawings are represented as sequences of
 points, as opposed to image pixels. Since the natural fit for modelling
