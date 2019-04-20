@@ -215,8 +215,31 @@ on what it means, don't run away. What's inside $nn\_{\_W}$ is much less
 relevant than how we interact with it from the outside. Put another
 way: feel free to consider it a black box.
 
-<p style="text-align: center">
-    <img src="/images/nn_equations.png" width="70%" />
+<p>
+$$
+\begin{aligned}
+&\text{1-hidden-layer neural network:}
+\\
+&~~~~~~nn_{_W}(\mathcal{X}_i) =
+\mathbf{W_O} \times \mathbf{h} + \mathbf{b_O}
+\\[5pt]
+&\text{With hidden state:}
+\\
+&~~~~~~~~\mathbf{h} = \tanh(
+\mathbf{W_I} \times \mathcal{X}_i + \mathbf{b_I})
+\\[5pt]
+&\text{And parameters:}
+\\
+&~~~~~~\mathbf{W_I}\text{~~~~input weights~~~~~(matrix or size }2 \times H\text{)}
+\\
+&~~~~~~\mathbf{W_O}\text{~~~output weights~~~(matrix or size }H \times H\text{)}
+\\[8pt]
+&~~~~~~\mathbf{b_I}\text{~~~~~input bias~~~~(column vector of size }H\text{)}
+\\
+&~~~~~~\mathbf{b_O}\text{~~~~output bias~~(column vector of size }H\text{)}
+\\
+\end{aligned}
+$$
 </p>
 
 All there is to understand is that given a bunch of weight $W$, the
@@ -352,8 +375,36 @@ $\mathcal{X}\_1~...~\mathcal{X}\_{i-1}$ to the hidden state
 $\mathbf{h}_i$? We don't. The model does, and make it available
 to the next step by outputing it. 
 
-<p style="text-align: center">
-    <img src="/images/rnn_equations.png" width="70%" />
+<p>
+$$
+\begin{aligned}
+&\text{Recurrent neural network:}
+\\
+&~~~~~~rnn_{_W}(\mathcal{X}_i {\color{Blue}{,~\mathbf{h}_i}}) =
+\mathbf{W_O} \times {\color{Blue}{\mathbf{h}_{i+1}}} + \mathbf{b_O}
+\\[5pt]
+&\text{With hidden state:}
+\\
+&~~~~~~~~{\color{Blue}{\mathbf{h}_{i+1}}} = \tanh(
+\mathbf{W_I} \times \mathcal{X}_i + \mathbf{b_I}~
+{\color{Blue}{+ \mathbf{W_H} \times \mathbf{h}_i + \mathbf{b_H}}})
+\\[5pt]
+&\text{And parameters:}
+\\
+&~~~~~~\mathbf{W_I}\text{~~~~input weights~~~~~(matrix or size }2 \times H\text{)}
+\\
+&~~~~~~{\color{Blue}{\mathbf{W_H}\text{~~~hidden weights~~(matrix or size }2 \times H\text{)}}}
+\\
+&~~~~~~\mathbf{W_O}\text{~~~output weights~~~(matrix or size }H \times H\text{)}
+\\[8pt]
+&~~~~~~{\color{Blue}{\mathbf{b_H}\text{~~~hidden bias~~(column vector of size }H\text{)}}}
+\\
+&~~~~~~\mathbf{b_I}\text{~~~~~input bias~~~~(column vector of size }H\text{)}
+\\
+&~~~~~~\mathbf{b_O}\text{~~~~output bias~~(column vector of size }H\text{)}
+\\
+\end{aligned}
+$$
 </p>
 
 The blue parts highlight the differences with the feedforward neural
