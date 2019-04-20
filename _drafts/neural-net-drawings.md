@@ -1317,7 +1317,7 @@ the original drawings ...
 
 <p style="text-align: center">
     <a href="/images/dataset/full_giraffe.png">
-        <img src="/images/dataset/selected_giraffe.png" width="75%" />
+        <img src="/images/dataset/selected_giraffe.png" width="85%" />
     </a>
 </p>
 
