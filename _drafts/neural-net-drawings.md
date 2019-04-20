@@ -642,7 +642,7 @@ as such:
 * Draw "end of drawing" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,0,1 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{3}}\_{i+1}}$
 
 <p style="text-align: center">
-    <img src="/images/mdn_stroke_state.png" width="30%" />
+    <img src="/images/mdn_stroke_state.png" width="25%" />
 </p>
 
 For normalization, we're going to use the softmax function for
@@ -756,7 +756,7 @@ You may recognize these symbols. They are the parameters of a
    independent normal distributions along x and y.
 
 <p style="text-align: center">
-    <img src="/images/normals.png" />
+    <img src="/images/normals.png" width="80%" />
 </p>
 
 We can make sure that $\mathbf{\sigma_x}$ and $\mathbf{\sigma_y}$ are
