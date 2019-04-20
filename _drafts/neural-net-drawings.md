@@ -122,7 +122,7 @@ $\begin{bmatrix} \mathbf{r}\_{i},~\mathbf{\theta}\_{i} \end{bmatrix}$
 from one such vector to the next?
 
 <p style="text-align: center">
-    <img src="/images/representations_plot.png" />
+    <img src="/images/representation_plots.png" width="60%" />
 </p>
 
 Well, it turns out the
@@ -146,7 +146,7 @@ representation is the most interesting for the three following reasons:
  is at least symmetrical.
 
  <p style="text-align: center">
-   <img src="/images/representation_distplots.png" />
+   <img src="/images/representation_distplots.png" width="70%" />
  </p>
 
  In  order for the neural net to learn more effectively, we are going
@@ -1183,7 +1183,7 @@ trajectory, even though we saw it wasn't the case when we plotted it
 at the beginning of the article (symmetric, but too spread out):
 
 <p style="text-align: center">
-    <img src="/images/distplot_xy.png" width="55%" />
+    <img src="/images/delta_xy_distplot.png" width="30%" />
 </p>
 
 So let's upgrade to a more sophisticated probability distribution.
