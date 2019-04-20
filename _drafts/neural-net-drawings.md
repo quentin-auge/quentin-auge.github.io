@@ -637,9 +637,9 @@ mass function for a distribution from which  we can sample the real
 stroke state predictions
 $\hat{\mathcal{Y}}\_i = \begin{bmatrix} \hat{\mathbf{p_1}}\_{i+1},~\hat{\mathbf{p_2}}\_{i+1},~\hat{\mathbf{p_3}}\_{i+1} \end{bmatrix}$
 as such:
-* Draw "regular point" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 1,0,0 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{1}}\_{i+1}}$
-* Draw "end of stroke" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,1,0 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{2}}\_{i+1}}$
-* Draw "end of drawing" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,0,1 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{3}}\_{i+1}}$
+* Draw "regular point" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 1,0,0 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{1}}}\_{i+1}$
+* Draw "end of stroke" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,1,0 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{2}}}\_{i+1}$
+* Draw "end of drawing" event $\hat{\mathcal{Y}}\_i = \begin{bmatrix} 0,0,1 \end{bmatrix}$ with probability $\tilde{\mathbf{p\_{3}}}\_{i+1}$
 
 <p style="text-align: center">
     <img src="/images/mdn_stroke_state.png" width="25%" />
