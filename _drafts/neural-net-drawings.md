@@ -1245,13 +1245,6 @@ $$
 This time, we're definitively done. This model for unconditional
 generation of drawings is the same as in the paper.
 
-<p style="text-align: center">
-    <img src="/images/sketch_rnn.png" width="80%" />
-</p>
-
-Credit: [A Neural Representation of Sketch Drawings](https://arxiv.org/abs/1704.03477), David Ha and Douglas Eck, Figure 2. Retouched to remove
-input vector $z$ not pertaining to unconditional generation of drawings.
-
 # Fourth and final generated drawings
 
 Time for some fun. Let's use our final model to produce more drawings!
