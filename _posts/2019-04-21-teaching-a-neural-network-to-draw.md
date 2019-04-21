@@ -51,7 +51,7 @@ see how much I'm cheating you (or not).
 ### Structure of the article
 
 The article is structured as follows: starting off with simple (and
-leaky) data representation and model, it progresses through failure
+leaky) data representation and model, it progresses through failures
 and successes to the model outlined in the Google Brain paper
 [A Neural Representation of Sketch Drawings](https://arxiv.org/abs/1704.03477).
 The article focuses exclusively on what it referred to in the paper as
@@ -130,7 +130,7 @@ are mainly composed of straight lines with some sharp angles, while
 faces are mostly smooth curves and circles. Both have a moderate number
 of strokes, though it is probably more difficult to position them at
 the right spot with respect to each other in order to generate decent
-faces than it is for Eiffel towers. fire trucks are definitely the most
+faces than it is for Eiffel towers. Fire trucks are definitely the most
 difficult to draw, combining all the previous difficulties with even
 more strokes.
 
