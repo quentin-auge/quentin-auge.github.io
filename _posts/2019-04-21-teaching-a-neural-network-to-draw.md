@@ -12,7 +12,7 @@ other proposed items, such as Eiffel towers, cats, faces or carrots.
 
 <figure>
     <div style="text-align: center">
-        <img src="/images/pathetic_penguin.png" width="12%" />
+        <img src="/images/pathetic_penguin.png" width="15%" />
         <figcaption>My attempt</figcaption>
     </div>
 </figure>
@@ -24,7 +24,7 @@ the machine beats you.
 
 <figure>
     <div style="text-align: center">
-        <img src="/images/generated/gmm512_20_penguin.gif" width="25%" />
+        <img src="/images/generated/gmm512_20_penguin.gif" width="30%" />
         <figcaption>The neural network's attempt</figcaption>
     </div>
 </figure>
@@ -36,7 +36,7 @@ drawing. Clearly, it looks like the student has surpassed the teacher.
 
 <div style="text-align: center">
     <a href="/images/dataset/full_penguin.png">
-        <img src="/images/dataset/selected_penguin.png" width="85%" />
+        <img src="/images/dataset/selected_penguin.png" width="90%" />
     </a>
 </div>
 <br />
@@ -114,13 +114,13 @@ excerpt of the dataset:
 
 <div style="text-align: center">
     <a href="/images/dataset/full_eiffel.png">
-        <img src="/images/dataset/selected_eiffel.png" width="85%" />
+        <img src="/images/dataset/selected_eiffel.png" width="90%" />
     </a>
     <a href="/images/dataset/full_face.png">
-        <img src="/images/dataset/selected_face.png" width="85%" />
+        <img src="/images/dataset/selected_face.png" width="90%" />
     </a>
     <a href="/images/dataset/full_firetruck.png">
-        <img src="/images/dataset/selected_firetruck.png" width="85%" />
+        <img src="/images/dataset/selected_firetruck.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -147,7 +147,7 @@ $\begin{bmatrix} \mathbf{r}\_{i},~\mathbf{\theta}\_{i} \end{bmatrix}$
 from one vector to the next?
 
 <div style="text-align: center">
-    <img src="/images/representation_plots.png" width="60%" />
+    <img src="/images/representation_plots.png" width="80%" />
 </div>
 <br/>
 
@@ -169,7 +169,7 @@ least three reasons:
    is at least symmetrical.
 
    <div style="text-align: center">
-     <img src="/images/representation_distplots.png" width="70%" />
+     <img src="/images/representation_distplots.png" width="90%" />
    </div>
    <br/>
 
@@ -225,7 +225,7 @@ as an iterative process:
  4. go back to step 2
 
 <div style="text-align: center">
-    <img src="/images/predict.png" width="50%" />
+    <img src="/images/predict.png" width="60%" />
 </div>
 <br/>
 
@@ -294,7 +294,7 @@ real-valued, and *auto* because they are essentially the same as the
 data: $\mathcal{Y}\_i = \mathcal{X}\_{i+1}$.
 
 <div style="text-align: center">
-    <img src="/images/train.png" width="60%" />
+    <img src="/images/train.png" width="65%" />
 </div>
 <br/>
 
@@ -482,7 +482,7 @@ Let's make the last statement more concrete by taking a *face* drawing
 as example:
 
 <div style="text-align: center">
-    <img src="/images/dataset/face.gif" width="25%" />
+    <img src="/images/dataset/face.gif" width="30%" />
 </div>
 <br/>
 
@@ -526,13 +526,13 @@ Tada!!!
 
 <div style="text-align: center">
     <a href="/images/generated/full_trajectory_eiffel.png">
-        <img src="/images/generated/selected_trajectory_eiffel.png" width="85%" />
+        <img src="/images/generated/selected_trajectory_eiffel.png" width="90%" />
     </a>
     <a href="/images/generated/full_trajectory_face.png">
-        <img src="/images/generated/selected_trajectory_face.png" width="85%" />
+        <img src="/images/generated/selected_trajectory_face.png" width="90%" />
     </a>
     <a href="/images/generated/full_trajectory_firetruck.png">
-        <img src="/images/generated/selected_trajectory_firetruck.png" width="85%" />
+        <img src="/images/generated/selected_trajectory_firetruck.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -550,7 +550,7 @@ the pencil to start a new stroke, left alone when to stop drawing. For
 its defence, it is not its fault. We simply didn't teach it how to.
 
 <div style="text-align: center">
-    <img src="/images/generated/trajectory_eiffel.gif" width="25%" />
+    <img src="/images/generated/trajectory_eiffel.gif" width="30%" />
 </div>
 <br/>
 
@@ -568,7 +568,7 @@ Since I value your sanity (and mine), let's consider a simple drawing
 as example, and omit the initial $\overrightarrow 0$ vector. It will save us the indices nightmare.
 
 <div style="text-align: center">
-    <img src="/images/eiffel.gif" width="25%" />
+    <img src="/images/eiffel.gif" width="30%" />
 </div>
 <br/>
 
@@ -585,7 +585,7 @@ $$
 </p>
 
 <div style="text-align: center">
-    <img src="/images/eiffel_annotated.png" width="35%" />
+    <img src="/images/eiffel_annotated.png" width="45%" />
 </div>
 <br/>
 
@@ -611,7 +611,7 @@ $$
 </p>
 
 <div style="text-align: center">
-    <img src="/images/eiffel_continuous.gif" width="25%" />
+    <img src="/images/eiffel_continuous.gif" width="30%" />
 </div>
 <br/>
 
@@ -745,7 +745,7 @@ actual stroke state predictions using a hat $\hat ~$.
 
 <figure>
     <div style="text-align: center">
-        <img src="/images/mdn_stroke_state.png" width="25%" />
+        <img src="/images/mdn_stroke_state.png" width="30%" />
         <figcaption>The flow for stroke state predictions,<br />
         leaving the trajectory and hidden state aside.</figcaption>
     </div>
@@ -778,7 +778,7 @@ let's visualize it.
 
 <figure>
     <div style="text-align: center">
-        <img src="/images/softmax.png" width="80%" />
+        <img src="/images/softmax.png" width="95%" />
         <figcaption>
             Repartition of sampled stroke states at various softmax temperatures<br />
             for model outputs
@@ -791,7 +791,7 @@ let's visualize it.
 Or more concretely with actual Eiffel towers generation:
 
 <div style="text-align: center">
-    <img src="/images/generated/base_eiffel_temperature_stroke_state.png" width="85%" />
+    <img src="/images/generated/base_eiffel_temperature_stroke_state.png" width="95%" />
 </div>
 <br/>
 
@@ -815,13 +815,13 @@ some drawings with $T_\mathbf{p} = 0.8$:
 
 <div style="text-align: center">
     <a href="/images/generated/full_base_eiffel.png">
-        <img src="/images/generated/selected_base_eiffel.png" width="85%" />
+        <img src="/images/generated/selected_base_eiffel.png" width="90%" />
     </a>
     <a href="/images/generated/full_base_face.png">
-        <img src="/images/generated/selected_base_face.png" width="85%" />
+        <img src="/images/generated/selected_base_face.png" width="90%" />
     </a>
     <a href="/images/generated/full_base_firetruck.png">
-        <img src="/images/generated/selected_base_firetruck.png" width="85%" />
+        <img src="/images/generated/selected_base_firetruck.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -880,7 +880,7 @@ In particular, when $\mathbf{\rho_{xy}} = 0$, the distribution is
 equivalent to two independent normals along x and y.
 
 <div style="text-align: center">
-    <img src="/images/normals.png" width="80%" />
+    <img src="/images/normals.png" width="100%" />
 </div>
 <br/>
 
@@ -904,7 +904,7 @@ $\Sigma_{i+1} = \begin{bmatrix}
 
 <figure>
     <div style="text-align: center">
-        <img src="/images/mdn_trajectory.png" width="50%" />
+        <img src="/images/mdn_trajectory.png" width="80%" />
         <figcaption>The flow for trajectory predictions,<br />
         leaving the stroke state and hidden state aside.</figcaption>
     </div>
@@ -928,7 +928,7 @@ at various temperatures. The highest the temperature, the most
 chaotic the trajectory.
 
 <div style="text-align: center">
-    <img src="/images/generated/gmm128_1_eiffel_temperatures_gmm.png" width="85%" />
+    <img src="/images/generated/gmm128_1_eiffel_temperatures_gmm.png" width="90%" />
 </div>
 <br/>
 
@@ -1249,7 +1249,7 @@ from the resulting probability distributions at given temperatures
 $T_\mathbf{xy}$ and $T_\mathbf{p}$:
 
 <div style="text-align: center">
-    <img src="/images/mdn_full.png" width="80%" />
+    <img src="/images/mdn_full.png" width="100%" />
 </div>
 <br/>
 
@@ -1257,13 +1257,13 @@ And finally, here come the results:
 
 <div style="text-align: center">
     <a href="/images/generated/full_gmm128_1_eiffel.png">
-        <img src="/images/generated/selected_gmm128_1_eiffel.png" width="85%" />
+        <img src="/images/generated/selected_gmm128_1_eiffel.png" width="90%" />
     </a>
     <a href="/images/generated/full_gmm128_1_face.png">
-        <img src="/images/generated/selected_gmm128_1_face.png" width="85%" />
+        <img src="/images/generated/selected_gmm128_1_face.png" width="90%" />
     </a>
     <a href="/images/generated/full_gmm128_1_firetruck.png">
-        <img src="/images/generated/selected_gmm128_1_firetruck.png" width="85%" />
+        <img src="/images/generated/selected_gmm128_1_firetruck.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -1292,7 +1292,7 @@ trajectory, even though we saw it wasn't the case when we plotted it
 at the beginning of the article (symmetric, but too spread out):
 
 <div style="text-align: center">
-    <img src="/images/delta_xy_distplot.png" width="30%" />
+    <img src="/images/delta_xy_distplot.png" width="50%" />
 </div>
 <br/>
 
@@ -1321,7 +1321,7 @@ The resulting probability distribution is called a *gaussian mixture
 model*, or GMM.
 
 <div style="text-align: center">
-    <img src="/images/gmm.png" />
+    <img src="/images/gmm.png" width="70%" />
 </div>
 <br/>
 
@@ -1332,7 +1332,7 @@ each), for a total of $(2 + 3 + 1) \times K = 120$ outputs for each
 next point prediction.
 
 <div style="text-align: center">
-    <img src="/images/mdn_gmm.png" width="55%" />
+    <img src="/images/mdn_gmm.png" width="75%" />
 </div>
 <br/>
 
@@ -1366,10 +1366,10 @@ Remember the images are clickable, incase you want to see more.
 
 <div style="text-align: center">
     <a href="/images/generated/full_gmm128_20_eiffel.png">
-        <img src="/images/generated/selected_gmm128_20_eiffel.png" width="85%" />
+        <img src="/images/generated/selected_gmm128_20_eiffel.png" width="90%" />
     </a>
     <a href="/images/generated/full_gmm128_20_face.png">
-        <img src="/images/generated/selected_gmm128_20_face.png" width="85%" />
+        <img src="/images/generated/selected_gmm128_20_face.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -1380,7 +1380,7 @@ Now, what about the long-awaited fire trucks?
 
 <div style="text-align: center">
     <a href="/images/generated/full_gmm128_20_firetruck.png">
-        <img src="/images/generated/selected_gmm128_20_firetruck.png" width="85%" />
+        <img src="/images/generated/selected_gmm128_20_firetruck.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -1393,7 +1393,7 @@ half per class of drawings, but results in better fire trucks:
 
 <div style="text-align: center">
     <a href="/images/generated/full_gmm512_20_firetruck.png">
-        <img src="/images/generated/selected_gmm512_20_firetruck.png" width="85%" />
+        <img src="/images/generated/selected_gmm512_20_firetruck.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -1416,16 +1416,16 @@ animals?
 
 <div style="text-align: center">
     <a href="/images/generated/full_gmm512_20_cat.png">
-        <img src="/images/generated/selected_gmm512_20_cat.png" width="85%" />
+        <img src="/images/generated/selected_gmm512_20_cat.png" width="90%" />
     </a>
     <a href="/images/generated/full_gmm512_20_crab.png">
-        <img src="/images/generated/selected_gmm512_20_crab.png" width="85%" />
+        <img src="/images/generated/selected_gmm512_20_crab.png" width="90%" />
     </a>
     <a href="/images/generated/full_gmm512_20_penguin.png">
-        <img src="/images/generated/selected_gmm512_20_penguin.png" width="85%" />
+        <img src="/images/generated/selected_gmm512_20_penguin.png" width="90%" />
     </a>
     <a href="/images/generated/full_gmm512_20_giraffe.png">
-        <img src="/images/generated/selected_gmm512_20_giraffe.png" width="85%" />
+        <img src="/images/generated/selected_gmm512_20_giraffe.png" width="90%" />
     </a>
 </div>
 <br/>
@@ -1437,7 +1437,7 @@ considering the original drawings ...
 
 <div style="text-align: center">
     <a href="/images/dataset/full_giraffe.png">
-        <img src="/images/dataset/selected_giraffe.png" width="85%" />
+        <img src="/images/dataset/selected_giraffe.png" width="90%" />
     </a>
 </div>
 <br/>
