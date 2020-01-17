@@ -5,104 +5,88 @@ title:  "Teaching a neural network to draw"
 
 Can you draw a penguin in less than 20 seconds?
 
-That is what the little game
-[Google Quick Draw!](https://quickdraw.withgoogle.com/)
-asks you to do. If it is not a penguin, it will be one the many
-other proposed items, such as Eiffel towers, cats, faces or carrots.
+If so, check out [Google Quick Draw!](https://quickdraw.withgoogle.com/),
+a game that asks you to do exactly that. If not, you are in luck,
+because this article is about teaching a neural network to do it for
+you.
 
 <figure>
     <div style="text-align: center">
-        <img src="/images/pathetic_penguin.png" width="15%" />
+        <img src="/images/pathetic_penguin.png" width="10%" />
         <figcaption>My attempt</figcaption>
     </div>
 </figure>
 
-If your drawing is as pathetic as mine, you are in luck, because this
-article is about teaching a neural network to do it for you. If not,
-well, I let you be the sole judge of whether you beat the machine, or
-the machine beats you.
+<div style="text-align: center">
+    VS<br /><br />
+</div>
+
+<figure>
+        <div style="text-align: center">
+            <a href="/images/dataset/full_penguin.png">
+                <img src="/images/dataset/selected_penguin.png" width="90%" />
+            </a>
+            <figcaption>Other people's attempts<br />(click the image for more samples)</figcaption>
+        </div>
+</figure>
+
+<div style="text-align: center"  padding="0" magin="0">
+    VS
+</div>
 
 <figure>
     <div style="text-align: center">
         <img src="/images/generated/gmm512_20_penguin.gif" width="30%" />
         <figcaption>The neural network's attempt</figcaption>
     </div>
+    <br />
 </figure>
 
-In 2017, Google released tens of millions of drawings from *Quick
-Draw!*. Quite astonishingly, a lot of hand-drawn penguins cannot
-compete with the neural network, although it used them to learn
-drawing. Clearly, it looks like the student has surpassed the teacher.
+Quite amazingly, a lot of the generated sketches outcompete the ones
+the machine learned to draw from.
 
-<div style="text-align: center">
-    <a href="/images/dataset/full_penguin.png">
-        <img src="/images/dataset/selected_penguin.png" width="90%" />
-    </a>
-</div>
-<br />
+<figure>
+    <div style="text-align: center">
+        <img src="/images/generated/mixed.png" width="90%" />
+        <figcaption>More machine generated drawings</figcaption>
+    </div>
+</figure>
+
+The article explains what the model generating the drawings looks
+like. The code (Pytorch) is available on [Github](https://github.com/quentin-auge/draw/).
 
 <p style="font-size: smaller;">
-Note: Throughout the article, everytime I include a series
-of 5 drawings that I (obviously) selected carefully, the image links to
-the larger series they were chosen from. Feel free to click it to
-see how much I'm cheating you (or not).
+Note: Throughout the article, everytime a series of 5 drawings is
+presented, the image links to the larger series they were chosen from.
+Feel free to click it to see how biased (or not) the selection is.
 </p>
 
 ### Structure of the article
 
-The article is structured as follows: starting off with simple (and
-leaky) data representation and model, it progresses through failures
-and successes to the model outlined in the Google Brain paper
-[A Neural Representation of Sketch Drawings](https://arxiv.org/abs/1704.03477).
-The article focuses exclusively on what it referred to in the paper as
-"unconditional generation of drawings". Put bluntly:
-"please draw me a penguin". The authors of the paper go one step
-further to achieve conditional generation ("please draw a penguin
-*like this one*") and interpolation ("please draw a penguin that is
-*half like this one, and half like that one*"). That would be a
-subject for a second article.
+Let's start at the end.
 
-Within the dataset, drawings are represented as sequences of points,
-making recurrent neural networks (RNNs) a natural fit for modelling
-them. The first half of the article expands on how to do just that.
-It includes a gentle introduction to RNNs, presenting them as a
-straightforward extension of the more classic feedforward
-(non-recurrent) neural networks. It also explains the best way to
-feed the drawings to the neural network in order to model them
-in all their complexity. In particular, how does the model know when
-it should lift the pencil to start a new stroke? And how does it
-know when to stop drawing?
+Concretely, the model is a recurrent neural network that jointly
+decides the position of each point, when to lift the pencil, and when
+to stop drawing. In order to better account for the uncertainty of
+hand-drawn trajectories, the network does not output the points
+directly. Instead, it outputs the parameters of some probability
+distributions from which the position and nature of the points can be
+sampled. The model is trained using gradient descent over a loss
+function that maximizes the likelihood of said distributions given the
+points in the training set.
 
-Unfortunately (spoiler ahead), generic recurrent neural networks will not
-be enough to model the subtleties of human drawing. As a solution,
-the second half of the article expands on an exciting extension of
-neural networks known as "mixture density networks" (MDNs), which
-involves adding a probabilistic layer on top of the RNN to better
-account for the uncertainty of hand-drawn trajectories. Probability
-distributions not only become central to generation (sampling), but
-are also placed at the heart of training by deriving an adequate loss
-function.
+I'm aware that last paragraph might not appear as crystal clear to most
+readers. If it is for you, you can refer directly to the
+[Google Brain paper](https://arxiv.org/abs/1704.03477) that describes
+the model, referred to as "unconditional generation of drawings".
 
-### Prerequisites
+For the rest of us, this article gives a shot at explaining as simply
+as possible the various parts of the model: the neural net part,
+the probabilistic layer stacked on top of it, and how they fit
+together.
 
-The article is pretty analytical. So, before math symbols start
-flooding your screen, let's go through the key concepts that will help
-you come back alive from its reading. Fear not, they are pretty light.
-
-Some familiarity with machine learning (in particular the concept of
-training supervised regression and classification models by loss
-minimization) is advised. The article will not get too deep into the
-inner workings of neural nets, as there is already a wealth of easily
-available information about them, and for our purpose, they can be
-treated as a black-box function parameterized with some weights.
-
-Perhaps more critically, being comfortable with basic probability
-theory would be of great help in the second half of the article,
-but as long as you know what a gaussian looks like (a multi-dimensional
-one, if possible), you're halfway there. If you know about maximum
-likelihood estimation, you're basically done.
-
-All set? Let's dive in.
+Expect to see a lot of crappy drawings along the way, in search for
+the final model.
 
 ## Data
 
@@ -112,27 +96,28 @@ across 345 categories. Let's pick 3 of them (*Eiffel tower*,
 *face* and *fire truck*) and attempt to model them. Here is an
 excerpt of the dataset:
 
-<div style="text-align: center">
-    <a href="/images/dataset/full_eiffel.png">
-        <img src="/images/dataset/selected_eiffel.png" width="90%" />
-    </a>
-    <a href="/images/dataset/full_face.png">
-        <img src="/images/dataset/selected_face.png" width="90%" />
-    </a>
-    <a href="/images/dataset/full_firetruck.png">
-        <img src="/images/dataset/selected_firetruck.png" width="90%" />
-    </a>
-</div>
-<br/>
+<figure>
+    <div style="text-align: center">
+        <a href="/images/dataset/full_eiffel.png">
+            <img src="/images/dataset/selected_eiffel.png" width="90%" />
+        </a>
+        <a href="/images/dataset/full_face.png">
+            <img src="/images/dataset/selected_face.png" width="90%" />
+        </a>
+        <a href="/images/dataset/full_firetruck.png">
+            <img src="/images/dataset/selected_firetruck.png" width="90%" />
+        </a>
+    <figcaption>Dataset sketches</figcaption>
+    <br/>
+    </div>
+</figure>
 
-All three categories provide a different set of challenges. Eiffel towers
-are mainly composed of straight lines with some sharp angles, while
-faces are mostly smooth curves and circles. Both have a moderate number
-of strokes, though it is probably more difficult to position them at
-the right spot with respect to each other in order to generate decent
-faces than it is for Eiffel towers. Fire trucks are definitely the most
-difficult to draw, combining all the previous difficulties with even
-more strokes.
+All three categories provide a different set of challenges. Eiffel
+towers contain mostly-continuous strokes with some sharp changes in
+directions. Faces are smoother, though it is probably more difficult
+to position the various strokes with respect to each other. Fire trucks
+are definitely the most difficult to draw, combining the previous
+difficulties of Eiffel towers and faces with even more strokes.
 
 ### Drawings as sequences of points
 
@@ -140,7 +125,7 @@ Drawings are presented in the dataset in their most obvious shape:
 sequences of points
 $\begin{bmatrix} \mathbf{x}\_{i},~\mathbf{y}\_{i} \end{bmatrix}$. But
 it is not the only way to represent them. What about sequences of vectors
-$\begin{bmatrix} \Delta \mathbf{x}\_{i},~\Delta \mathbf{y}\_{i} \end{bmatrix}$
+$\begin{bmatrix} \Delta \mathbf{x}\_{i},~\Delta \mathbf{y}\_{i}  \end{bmatrix}$
 from each points to the next, or — let's get crazy — sequences of
 polar-coordinates vectors
 $\begin{bmatrix} \mathbf{r}\_{i},~\mathbf{\theta}\_{i} \end{bmatrix}$
@@ -1461,5 +1446,3 @@ dataset, the final model generates smooth ones. In the process, it
 manages to internalize a grammar of drawings, positioning the
 primitives in such a way that they form recognizable drawings that
 actually surpass quite a lot of the examples it has been trained on.
-
-The code for drawing generation is available on [Github](https://github.com/quentin-auge/draw/).
