@@ -2,5 +2,6 @@ markdown: kramdown
 theme: minima
 
 title:
+permalink: /:title.html
 
 google_analytics: UA-138576999-1

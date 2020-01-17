@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Teaching a neural network to draw"
-permalink: teaching-a-neural-network-to-draw
 ---
 
 Can you draw a penguin in less than 20 seconds?
