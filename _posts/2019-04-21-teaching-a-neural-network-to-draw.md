@@ -139,7 +139,7 @@ from one vector to the next?
 It turns out the vector representation is the most interesting for at
 least three reasons:
  * It is trivial and inexpensive to compute:
- $\begin{bmatrix} \Delta \mathbf{x}\_{i},~\Delta \mathbf{x}\_{i} \end{bmatrix} = \begin{bmatrix} \mathbf{x}\_{i+1} - \mathbf{y}\_{i},~\mathbf{y}\_{i+1} - \mathbf{y}\_{i} \end{bmatrix}$
+ $\begin{bmatrix} \Delta \mathbf{x}\_{i},~\Delta \mathbf{y}\_{i} \end{bmatrix} = \begin{bmatrix} \mathbf{x}\_{i+1} - \mathbf{x}\_{i},~\mathbf{y}\_{i+1} - \mathbf{y}\_{i} \end{bmatrix}$
  , as opposed to the polar representation I will spare you
  the trigonometry of.
  * It allows us to define a compelling object: a *no-displacement*
